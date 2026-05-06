@@ -390,7 +390,7 @@ def construir_mixto(forma_entrada, dim_salida):
 
 
 def construir_mixto_v1_E(forma_entrada, dim_salida):
-    """[Emilio] Conv1D (32 filtros) -> LSTM con dropout interno -> Dense.
+    """ Conv1D (32 filtros) -> LSTM con dropout interno -> Dense.
     L2 en Conv1D + Dropout externo 0.4 + LR 3e-4. Capacidad reducida respecto
     al mixto original (Conv1D 64->32) para que la regularizacion compense
     en ventanas largas con target promediado."""
@@ -403,4 +403,34 @@ def construir_mixto_v1_E(forma_entrada, dim_salida):
     salidas = Dense(dim_salida)(x)
     modelo = Model(inputs=entradas, outputs=salidas, name='Mixto_v1_E')
     modelo.compile(optimizer=keras.optimizers.Adam(learning_rate=3e-4), loss='mae')
+    return modelo
+
+def construir_mixto_v2_E(forma_entrada, dim_salida):
+    """ Mixto agresivamente regularizado para ventanas largas
+    (ent90_sal30) donde v1_E sobreajusta desde la primera epoca.
+
+    Cambios respecto a v1_E:
+    - Capacidad reducida: Conv1D 32->16 filtros, LSTM 64->32 unidades.
+    - Kernel grande (kernel_size=7) para capturar patrones semanales
+      en ventana de 90 dias, en vez de patrones locales de 3 dias.
+    - padding='causal' para evitar leakage temporal hacia el futuro
+      (la conv solo mira pasado, coherente con forecasting).
+    - Dropout 0.5 entre Conv1D y LSTM, y otro 0.5 antes de Dense.
+    - L2 mas fuerte en Conv1D (1e-3 vs 1e-4 de v1_E).
+    - Sin recurrent_dropout (kernel CPU optimizado, mas rapido).
+    - LR fijo 3e-5, compatible con ReduceLROnPlateau.
+    - Loss Huber, robusto a outliers en retornos."""
+    reg = regularizers.l2(1e-3)
+    entradas = Input(shape=forma_entrada)
+    x = Conv1D(16, kernel_size=7, activation='relu', padding='causal',
+               kernel_regularizer=reg)(entradas)
+    x = Dropout(0.5)(x)
+    x = LSTM(32, dropout=0.1)(x)
+    x = Dropout(0.5)(x)
+    salidas = Dense(dim_salida)(x)
+    modelo = Model(inputs=entradas, outputs=salidas, name='Mixto_v2_E')
+    modelo.compile(
+        optimizer=keras.optimizers.Adam(learning_rate=3e-5, clipnorm=1.0),
+        loss=keras.losses.Huber(delta=1.0)
+    )
     return modelo
