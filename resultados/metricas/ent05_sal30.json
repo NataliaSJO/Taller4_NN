@@ -1,0 +1,58 @@
+[
+  {
+    "modelo": "Lineal",
+    "mae_train": 0.002162166995937574,
+    "mae_val": 0.001792602114379787,
+    "mae_test": 0.0023369667155579503,
+    "n_params": 0,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "BuyAndHold",
+    "mae_train": 0.0021733199368651973,
+    "mae_val": 0.0017841585128228249,
+    "mae_test": 0.002319321425727783,
+    "n_params": 0,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Dense",
+    "mae_train": 0.0021866267060672243,
+    "mae_val": 0.0018128794750380335,
+    "mae_test": 0.0023395098164138103,
+    "n_params": 65559,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "LSTM",
+    "mae_train": 0.0021768175810355623,
+    "mae_val": 0.0018558078266732354,
+    "mae_test": 0.00236224538055008,
+    "n_params": 24023,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Conv1D",
+    "mae_train": 0.0018254435967900156,
+    "mae_val": 0.0019812620277576353,
+    "mae_test": 0.0024794526600481173,
+    "n_params": 11415,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Mixto",
+    "mae_train": 0.001771448874892003,
+    "mae_val": 0.001978892957280225,
+    "mae_test": 0.002631391719602659,
+    "n_params": 38999,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Dense_prep",
+    "mae_train": 0.09293106855941176,
+    "mae_val": 0.08677713442927837,
+    "mae_test": 0.10566392588508865,
+    "n_params": 65559,
+    "seccion": "investigacion"
+  }
+]
