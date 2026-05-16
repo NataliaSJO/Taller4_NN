@@ -19,8 +19,42 @@ CB_KEYS = {
 }
 
 
+def construir_dense_v2_param(
+    dim_entrada,
+    dim_salida,
+    units=(128, 64, 32),
+    dropout=0.3,
+    activation='relu',
+    l2=0.0,
+):
+    """Version parametrizable de Dense_v2 para busqueda de arquitectura."""
+    reg = keras.regularizers.l2(l2) if l2 and l2 > 0 else None
+    modelo = keras.Sequential(name='Dense_v2_param')
+    for i, n_units in enumerate(units):
+        kwargs = {"activation": activation, "kernel_regularizer": reg}
+        if i == 0:
+            kwargs["input_shape"] = (dim_entrada,)
+        modelo.add(keras.layers.Dense(n_units, **kwargs))
+        if dropout and dropout > 0:
+            modelo.add(keras.layers.Dropout(dropout))
+    modelo.add(keras.layers.Dense(dim_salida))
+    modelo.compile(optimizer='adam', loss='mae')
+    return modelo
+
+
+# Compatibilidad con notebooks existentes que acceden al constructor desde
+# utilidades.modelos despues de importar/reload utilidades.tuning.
+modelos.construir_dense_v2_param = construir_dense_v2_param
+
+
+def _get_model_fn(model_fn_name):
+    if model_fn_name in globals():
+        return globals()[model_fn_name]
+    return getattr(modelos, model_fn_name)
+
+
 def _build_model_from_modelos(model_fn_name, cfg, X_train, y_train):
-    fn = getattr(modelos, model_fn_name)
+    fn = _get_model_fn(model_fn_name)
     sig = inspect.signature(fn)
     pnames = set(sig.parameters.keys())
 
@@ -159,7 +193,7 @@ def _train_one(model_fn_name, cfg, X_train, y_train, X_val, y_val):
     model, Xtr = _build_model_from_modelos(model_fn_name, cfg, X_train, y_train)
 
     # Val con mismo tipo de entrada
-    if "dim_entrada" in inspect.signature(getattr(modelos, model_fn_name)).parameters:
+    if "dim_entrada" in inspect.signature(_get_model_fn(model_fn_name)).parameters:
         Xv = aplanar_X(X_val) if X_val.ndim == 3 else X_val
     else:
         Xv = X_val
@@ -179,7 +213,7 @@ def _train_one(model_fn_name, cfg, X_train, y_train, X_val, y_val):
 
 def ofat_search(model_fn_name, base_cfg, search_steps, X_train, y_train, X_val, y_val):
     # parámetros realmente tuneables para ese método
-    sig = inspect.signature(getattr(modelos, model_fn_name))
+    sig = inspect.signature(_get_model_fn(model_fn_name))
     ctor_tuneables = set(sig.parameters.keys()) - {"dim_entrada", "dim_salida", "forma_entrada"}
     valid = ctor_tuneables | FIT_KEYS | CB_KEYS | {"lr", "seed", "clipnorm"}
 
@@ -235,7 +269,7 @@ def ofat_search(model_fn_name, base_cfg, search_steps, X_train, y_train, X_val, 
 def grid_search(model_fn_name, base_cfg, search_steps, X_train, y_train, X_val, y_val,
                 progress_every=25):
     # Prueba todas las combinaciones posibles de search_steps.
-    sig = inspect.signature(getattr(modelos, model_fn_name))
+    sig = inspect.signature(_get_model_fn(model_fn_name))
     ctor_tuneables = set(sig.parameters.keys()) - {"dim_entrada", "dim_salida", "forma_entrada"}
     valid = ctor_tuneables | FIT_KEYS | CB_KEYS | {"lr", "seed", "clipnorm"}
 
@@ -317,7 +351,7 @@ def successive_halving_search(model_fn_name, base_cfg, search_steps, X_train, y_
                               short_epochs=12, final_epochs=60, progress_every=None):
     # Ronda barata con pocas epocas; ronda final solo con los mejores candidatos.
     # No usa azar: selecciona candidatos repartidos uniformemente en la grilla.
-    sig = inspect.signature(getattr(modelos, model_fn_name))
+    sig = inspect.signature(_get_model_fn(model_fn_name))
     ctor_tuneables = set(sig.parameters.keys()) - {"dim_entrada", "dim_salida", "forma_entrada"}
     valid = ctor_tuneables | FIT_KEYS | CB_KEYS | {"lr", "seed", "clipnorm"}
 
