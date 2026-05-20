@@ -1,10 +1,18 @@
 [
   {
+    "modelo": "Dense_prep",
+    "mae_train": 0.2797737274372917,
+    "mae_val": 0.23733230694914595,
+    "mae_test": 0.29136374857764985,
+    "n_params": 566039,
+    "seccion": "investigacion"
+  },
+  {
     "modelo": "Lineal",
-    "mae_train": 0.00504646783231918,
-    "mae_val": 0.004875936828217304,
-    "mae_test": 0.006317199844984269,
-    "n_params": 0,
+    "mae_train": 0.004985553954475927,
+    "mae_val": 0.004981983018102658,
+    "mae_test": 0.006425920961683153,
+    "n_params": 47633,
     "seccion": "competicion"
   },
   {
@@ -16,43 +24,54 @@
     "seccion": "competicion"
   },
   {
-    "modelo": "Dense",
-    "mae_train": 0.005301780273924348,
-    "mae_val": 0.004310507603676512,
-    "mae_test": 0.0056120208580109935,
-    "n_params": 566039,
+    "modelo": "construir_dense_v2_halving",
+    "mae_train": 0.005400663542186419,
+    "mae_val": 0.004309365703328095,
+    "mae_test": 0.005589103473743696,
+    "n_params": 276183,
+    "funcion": "construir_dense_v2",
+    "best_val_loss": 0.004309365991503,
+    "best_epoch": 11,
+    "best_cfg": {
+      "epochs": 150,
+      "batch_size": 128,
+      "lr": 0.0003,
+      "factor": 0.7,
+      "rlr_patience": 5,
+      "min_delta": 1e-06,
+      "min_lr": 1e-06,
+      "seed": 42,
+      "verbose": 0,
+      "es_patience": 25,
+      "restore_best_weights": true
+    },
     "seccion": "competicion"
   },
   {
-    "modelo": "LSTM",
-    "mae_train": 0.0053157661544814706,
-    "mae_val": 0.004308019494607291,
-    "mae_test": 0.005664122185420709,
-    "n_params": 24023,
+    "modelo": "LSTM_param_mas_epocas",
+    "mae_train": 0.005386216098760662,
+    "mae_val": 0.004316011159555777,
+    "mae_test": 0.005595362793367965,
+    "n_params": 2951,
+    "gap_train_val": 0.0010702049392048848,
+    "gap_train_test": 0.00020914669460730256,
+    "epochs_extra": 500,
     "seccion": "competicion"
   },
   {
     "modelo": "Conv1D",
-    "mae_train": 0.005226299810708003,
-    "mae_val": 0.004294575271204491,
-    "mae_test": 0.0056298155963491305,
+    "mae_train": 0.005351404742982519,
+    "mae_val": 0.004315569578686204,
+    "mae_test": 0.0055957775532018165,
     "n_params": 11415,
     "seccion": "competicion"
   },
   {
     "modelo": "Mixto",
-    "mae_train": 0.0056138758768401464,
-    "mae_val": 0.0045967283615553104,
-    "mae_test": 0.005788811579566759,
+    "mae_train": 0.004792042947499207,
+    "mae_val": 0.004649979987267206,
+    "mae_test": 0.006266892039415684,
     "n_params": 38999,
     "seccion": "competicion"
-  },
-  {
-    "modelo": "Dense_prep",
-    "mae_train": 0.2796675505679561,
-    "mae_val": 0.23724419689780585,
-    "mae_test": 0.2914125196997971,
-    "n_params": 566039,
-    "seccion": "investigacion"
   }
 ]

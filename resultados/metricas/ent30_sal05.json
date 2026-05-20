@@ -1,0 +1,72 @@
+[
+  {
+    "modelo": "Lineal",
+    "mae_train": 0.0054651933148027855,
+    "mae_val": 0.004692926517720439,
+    "mae_test": 0.006121583964206029,
+    "n_params": 15893,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "BuyAndHold",
+    "mae_train": 0.0053955835957357695,
+    "mae_val": 0.0043022512431604145,
+    "mae_test": 0.005585018924173202,
+    "n_params": 0,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Dense_v2_convergente_largo",
+    "mae_train": 0.005394325378374401,
+    "mae_val": 0.004305526088864214,
+    "mae_test": 0.005585136362372567,
+    "n_params": 72743,
+    "funcion": "construir_dense_v2",
+    "best_val_loss": 0.004305157344788313,
+    "best_epoch": 382,
+    "best_cfg": NaN,
+    "gap_train_val": 0.0010887992895101872,
+    "best_train_eval_loss": 0.005394370295107365,
+    "best_train_val_gap": 0.0010892129503190517,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "LSTM_param_halving_refinado_balanceado",
+    "mae_train": 0.005386006360186501,
+    "mae_val": 0.004305392245315557,
+    "mae_test": 0.0055830792577106995,
+    "n_params": 2951,
+    "gap_train_val": 0.001080614114870944,
+    "gap_train_test": 0.00019707289752419858,
+    "balanced_score": 0.019295952616631987,
+    "best_val_loss": 0.005064181052148342,
+    "best_train_eval_loss": 0.006145021878182888,
+    "best_train_val_gap": 0.001080840826034546,
+    "best_epoch": 600,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Conv1D",
+    "mae_train": 0.0052056052485263205,
+    "mae_val": 0.00432129945189834,
+    "mae_test": 0.005578148000717601,
+    "n_params": 11415,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Mixto",
+    "mae_train": 0.0047798401719752045,
+    "mae_val": 0.004708658268558835,
+    "mae_test": 0.0063203875455959,
+    "n_params": 38999,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Conv1D_prep",
+    "mae_train": 0.2738040987347958,
+    "mae_val": 0.2372558762331151,
+    "mae_test": 0.2926925678636379,
+    "n_params": 11415,
+    "seccion": "investigacion"
+  }
+]
