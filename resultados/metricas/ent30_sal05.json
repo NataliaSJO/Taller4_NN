@@ -16,7 +16,7 @@
     "seccion": "competicion"
   },
   {
-    "modelo": "Dense_v2_convergente_largo",
+    "modelo": "Dense",
     "mae_train": 0.005394325378374401,
     "mae_val": 0.004305526088864214,
     "mae_test": 0.005585136362372567,
@@ -31,7 +31,7 @@
     "seccion": "competicion"
   },
   {
-    "modelo": "LSTM_param_halving_refinado_balanceado",
+    "modelo": "LSTM",
     "mae_train": 0.005386006360186501,
     "mae_val": 0.004305392245315557,
     "mae_test": 0.0055830792577106995,

@@ -24,7 +24,7 @@
     "seccion": "competicion"
   },
   {
-    "modelo": "construir_dense_v2_halving",
+    "modelo": "Dense",
     "mae_train": 0.005400663542186419,
     "mae_val": 0.004309365703328095,
     "mae_test": 0.005589103473743696,
@@ -48,7 +48,7 @@
     "seccion": "competicion"
   },
   {
-    "modelo": "LSTM_param_mas_epocas",
+    "modelo": "LSTM",
     "mae_train": 0.005386216098760662,
     "mae_val": 0.004316011159555777,
     "mae_test": 0.005595362793367965,
