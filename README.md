@@ -75,7 +75,7 @@ Abrir `analisis/cartera.ipynb`. Requiere que los cuadernos con `sal90` estén ej
 
 ## Combinaciones de ventanas
 
-| Ventana entrada \ Ventana salida | 1d | 5d | 30d | 90d |
+| Ventana salida \ Ventana entrada | 1d | 5d | 30d | 90d |
 |---|---|---|---|---|
 | **5d**  | ent05_sal01 | ent05_sal05 | ent05_sal30 | ent05_sal90 |
 | **10d** | ent10_sal01 | ent10_sal05 | ent10_sal30 | ent10_sal90 |
