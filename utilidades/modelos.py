@@ -13,6 +13,12 @@ from keras.layers import (
     SeparableConv1D
 )
 from keras import regularizers
+from utilidades.evaluacion import evaluar_modelo
+
+try:
+    from IPython.display import display
+except ImportError:
+    display = print
 
 
 # ──────────────────────────────────────────────────────────────
@@ -882,4 +888,112 @@ def successive_halving_search(model_fn_name, base_cfg, search_steps, X_train, y_
 
     df_final = pd.DataFrame(trials).sort_values("score").reset_index(drop=True)
     return best_cfg, best_val, best_epoch, best_hist, best_model, df_short, df_final
+
+
+def crear_callbacks_base(patience=18, rlr_patience=6, min_delta=1e-6, min_lr=1e-7):
+    return [
+        EarlyStopping(
+            monitor='val_loss', patience=patience, min_delta=min_delta,
+            restore_best_weights=True, mode='min', verbose=1,
+        ),
+        ReduceLROnPlateau(
+            monitor='val_loss', factor=0.5, patience=rlr_patience,
+            min_delta=min_delta, min_lr=min_lr, mode='min', verbose=1,
+        ),
+    ]
+
+
+CALLBACKS = crear_callbacks_base()
+
+
+def resultado_canonico(resultado, nombre):
+    return {
+        'modelo': nombre,
+        'mae_train': float(resultado['mae_train']),
+        'mae_val': float(resultado['mae_val']),
+        'mae_test': float(resultado['mae_test']),
+        'n_params': int(resultado['n_params']),
+    }
+
+
+def graficar_metricas_resultado(resultado, titulo):
+    fig, ax = plt.subplots(figsize=(5, 3.5))
+    ax.bar(
+        ['Train', 'Validacion', 'Test'],
+        [resultado['mae_train'], resultado['mae_val'], resultado['mae_test']],
+        color=['steelblue', 'orange', 'tomato'],
+    )
+    ax.set_title(titulo)
+    ax.set_ylabel('MAE')
+    ax.grid(True, axis='y', alpha=0.3)
+    plt.tight_layout()
+    plt.show()
+
+
+def entrenar_candidatos_parametricos(
+    model_fn_name,
+    candidatos,
+    base_cfg,
+    X_train_model,
+    y_train,
+    X_val_model,
+    y_val,
+    X_eval_train,
+    X_eval_val,
+    X_eval_test,
+    y_eval_test,
+):
+    resultados = []
+    historias = {}
+    modelos_entrenados = {}
+    total = len(candidatos)
+
+    for i, candidato in enumerate(candidatos, start=1):
+        cfg = {**base_cfg, **candidato}
+        nombre = cfg.pop('nombre')
+        print(f'Entrenando {nombre} ({i}/{total})...')
+        score, best_val, best_epoch, best_train, best_gap, hist, model = _train_one(
+            model_fn_name,
+            cfg,
+            X_train_model, y_train,
+            X_val_model, y_val,
+        )
+        met = evaluar_modelo(
+            model,
+            X_eval_train, y_train,
+            X_eval_val, y_val,
+            X_eval_test, y_eval_test,
+            nombre=nombre,
+        )
+        met.update({
+            'balanced_score': float(score),
+            'best_val_loss': float(best_val),
+            'best_train_eval_loss': float(best_train),
+            'best_train_val_gap': float(best_gap),
+            'best_epoch': int(best_epoch),
+            'cfg': cfg,
+        })
+        resultados.append(met)
+        historias[nombre] = hist
+        modelos_entrenados[nombre] = model
+        print({k: met[k] for k in ['mae_train', 'mae_val', 'mae_test', 'best_train_val_gap', 'best_epoch']})
+
+    df = pd.DataFrame(resultados).sort_values(
+        ['balanced_score', 'mae_val', 'mae_test']
+    ).reset_index(drop=True)
+    mejor_nombre = df.loc[0, 'modelo']
+    return df, historias[mejor_nombre], modelos_entrenados[mejor_nombre], df.loc[0].to_dict()
+
+
+def seleccionar_mejor_familia(resultados, nombre_final):
+    filas = []
+    for origen, resultado in resultados:
+        fila = resultado_canonico(resultado, nombre_final)
+        fila['origen'] = origen
+        filas.append(fila)
+    df = pd.DataFrame(filas).sort_values(['mae_val', 'mae_test', 'mae_train']).reset_index(drop=True)
+    display(df[['origen', 'modelo', 'mae_train', 'mae_val', 'mae_test', 'n_params']].round(6))
+    elegido = resultado_canonico(df.loc[0].to_dict(), nombre_final)
+    print(f"Resultado activo para {nombre_final}: {df.loc[0, 'origen']}")
+    return elegido, df
 
