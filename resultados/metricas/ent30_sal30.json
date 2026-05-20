@@ -1,0 +1,178 @@
+[
+  {
+    "modelo": "Lineal",
+    "mae_train": 0.0021480478865604025,
+    "mae_val": 0.0017392510474953458,
+    "mae_test": 0.0024347062506158957,
+    "n_params": 0,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "BuyAndHold",
+    "mae_train": 0.00220506896425963,
+    "mae_val": 0.0017016715047404093,
+    "mae_test": 0.002319571359480133,
+    "n_params": 0,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Dense",
+    "mae_train": 0.002203198541232323,
+    "mae_val": 0.0017023171802784745,
+    "mae_test": 0.0023512470517471243,
+    "n_params": 212759,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Dense_v2",
+    "mae_train": 0.0022102424013028957,
+    "mae_val": 0.0017000079258566296,
+    "mae_test": 0.0023566592380036906,
+    "n_params": 99543,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Dense_v3",
+    "mae_train": 0.002200331220723824,
+    "mae_val": 0.0017010865367174798,
+    "mae_test": 0.002325371093976418,
+    "n_params": 527767,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Dense_v4",
+    "mae_train": 0.0022024974305157393,
+    "mae_val": 0.001701378817869934,
+    "mae_test": 0.0023191534899359902,
+    "n_params": 98199,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Dense_v5",
+    "mae_train": 0.0021213258029041267,
+    "mae_val": 0.001703354138248479,
+    "mae_test": 0.002382474232837621,
+    "n_params": 182807,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Dense_v6",
+    "mae_train": 0.0021936776342201146,
+    "mae_val": 0.0016959522811336007,
+    "mae_test": 0.002320224716621107,
+    "n_params": 35511,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "LSTM",
+    "mae_train": 0.002191965313490234,
+    "mae_val": 0.0017145542282726283,
+    "mae_test": 0.0023550185834833193,
+    "n_params": 24023,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "LSTM_v2",
+    "mae_train": 0.0021834554477960307,
+    "mae_val": 0.0017033917336308762,
+    "mae_test": 0.002336117353935836,
+    "n_params": 35703,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "BiGRU_v3",
+    "mae_train": 0.00233896312913241,
+    "mae_val": 0.0018103136904278193,
+    "mae_test": 0.00249204203151347,
+    "n_params": 12439,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "LSTM_v4",
+    "mae_train": 0.0022024492413915612,
+    "mae_val": 0.001701553564654742,
+    "mae_test": 0.0023189803372814584,
+    "n_params": 25367,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "LSTM_v5",
+    "mae_train": 0.0023928662147656896,
+    "mae_val": 0.0018529810487233416,
+    "mae_test": 0.0025444947836912725,
+    "n_params": 80791,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "GRU_v6",
+    "mae_train": 0.0021972946392044457,
+    "mae_val": 0.0017116174689249177,
+    "mae_test": 0.0023367418540810544,
+    "n_params": 27255,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Conv1D",
+    "mae_train": 0.002193101609770607,
+    "mae_val": 0.0017052604864644446,
+    "mae_test": 0.002318759180929175,
+    "n_params": 11415,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Conv1D_v2",
+    "mae_train": 0.002234156510559336,
+    "mae_val": 0.0017042808085111604,
+    "mae_test": 0.0024329495013583322,
+    "n_params": 24343,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Conv1D_v3",
+    "mae_train": 0.002188205026471598,
+    "mae_val": 0.0017033126328325975,
+    "mae_test": 0.0023178686103133813,
+    "n_params": 12599,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Conv1D_v4",
+    "mae_train": 0.0021849969593249526,
+    "mae_val": 0.0016992497115953687,
+    "mae_test": 0.002321339483111051,
+    "n_params": 11415,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Conv1D_v5",
+    "mae_train": 0.0022024939594766256,
+    "mae_val": 0.0017012954227958023,
+    "mae_test": 0.002319081313506873,
+    "n_params": 4636,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Conv1D_v6",
+    "mae_train": 0.0022026978182535474,
+    "mae_val": 0.0017015806508097208,
+    "mae_test": 0.002327172954751816,
+    "n_params": 21719,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Mixto",
+    "mae_train": 0.0021817451178176113,
+    "mae_val": 0.0017113690197795859,
+    "mae_test": 0.002372394443109831,
+    "n_params": 38999,
+    "seccion": "competicion"
+  },
+  {
+    "modelo": "Conv1D_prep",
+    "mae_train": 0.09475378188963145,
+    "mae_val": 0.0795059206594282,
+    "mae_test": 0.10558807663870128,
+    "n_params": 11415,
+    "seccion": "investigacion"
+  }
+]
