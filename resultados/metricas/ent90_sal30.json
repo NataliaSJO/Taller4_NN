@@ -3,7 +3,7 @@
     "modelo": "Lineal",
     "mae_train": 0.0020057308842788306,
     "mae_val": 0.001966096331519361,
-    "mae_test": 0.0026160340219665485,
+    "mae_test": 0.002616034021966549,
     "n_params": 0,
     "seccion": "competicion"
   },
@@ -17,42 +17,42 @@
   },
   {
     "modelo": "Dense",
-    "mae_train": 0.0021653485700812336,
-    "mae_val": 0.001792812035550183,
-    "mae_test": 0.0023189939517703254,
+    "mae_train": 0.002196106433308015,
+    "mae_val": 0.0018255819511735884,
+    "mae_test": 0.002351380639756211,
     "n_params": 274839,
     "seccion": "competicion"
   },
   {
     "modelo": "LSTM",
-    "mae_train": 0.008976428013287479,
-    "mae_val": 0.007643207195584308,
-    "mae_test": 0.009771518238735184,
-    "n_params": 129111,
+    "mae_train": 0.0021798110070107035,
+    "mae_val": 0.001803002282010157,
+    "mae_test": 0.0023374386409127043,
+    "n_params": 36951,
     "seccion": "competicion"
   },
   {
     "modelo": "Conv1D",
-    "mae_train": 0.002164797257890623,
-    "mae_val": 0.0017926229331056782,
-    "mae_test": 0.002317426516191656,
-    "n_params": 11415,
+    "mae_train": 0.0022634434218732485,
+    "mae_val": 0.0019628354843005923,
+    "mae_test": 0.0025733829936529186,
+    "n_params": 13143,
     "seccion": "competicion"
   },
   {
     "modelo": "Mixto",
-    "mae_train": 0.0021659895178025245,
-    "mae_val": 0.0017979113871479792,
-    "mae_test": 0.0023203271127384467,
-    "n_params": 9623,
+    "mae_train": 0.002156563826054716,
+    "mae_val": 0.0017895097717139186,
+    "mae_test": 0.002322770272166178,
+    "n_params": 14263,
     "seccion": "competicion"
   },
   {
-    "modelo": "Conv1D_prep",
-    "mae_train": 0.0931451419155602,
-    "mae_val": 0.08727399060893576,
-    "mae_test": 0.10533076938195647,
-    "n_params": 11415,
+    "modelo": "Mixto_prep",
+    "mae_train": 0.09266783966092261,
+    "mae_val": 0.08691600319394896,
+    "mae_test": 0.10567862310321935,
+    "n_params": 14263,
     "seccion": "investigacion"
   }
 ]
