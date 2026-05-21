@@ -1,3 +1,9 @@
+
+<p align="center">
+  <img src="portada.png" alt="Taller 4: Redes Neuronales" width="80%"/>
+</p>
+
+
 # Taller 4 MIAX — Redes Neuronales para Forecasting
 
 Forecasting de precios de cierre del S&P 500 (23 activos) usando redes neuronales.  
