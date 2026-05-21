@@ -16,7 +16,7 @@
     "seccion": "competicion"
   },
   {
-    "modelo": "Dense_v2",
+    "modelo": "Dense",
     "mae_train": 0.011607984942402243,
     "mae_val": 0.009215143788601003,
     "mae_test": 0.012252968297270463,
