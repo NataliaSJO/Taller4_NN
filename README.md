@@ -73,11 +73,20 @@ Abrir `analisis/cartera.ipynb`. Requiere que los cuadernos con `sal90` estén ej
 
 ---
 
-## Combinaciones de ventanas
+## Combinaciones de ventanas con datos de test
 
-| Ventana salida \ Ventana entrada | 1d | 5d | 30d | 90d |
+| Ventana entrada \ Ventana salida | 1d | 5d | 30d | 90d |
 |---|---|---|---|---|
-| **5d**  | ent05_sal01 | ent05_sal05 | ent05_sal30 | ent05_sal90 |
-| **10d** | ent10_sal01 | ent10_sal05 | ent10_sal30 | ent10_sal90 |
-| **30d** | ent30_sal01 | ent30_sal05 | ent30_sal30 | ent30_sal90 |
-| **90d** | ent90_sal01 | ent90_sal05 | ent90_sal30 | ent90_sal90 |
+| **5d**  | 0.012243 | 0.005581 | 0.002319 | 0.001263 |
+| **10d** | 0.012244 | 0.005580 | 0.002319 | 0.001262 |
+| **30d** | 0.012251 | 0.005578 | 0.002319 | 0.001264 |
+| **90d** | 0.012271 | 0.005589 | 0.002320 | 0.001268 |
+
+## Combinaciones de ventanas con datos de investigación
+
+| Ventana entrada \ Ventana salida | 1d | 5d | 30d | 90d |
+|---|---|---|---|---|
+| **5d**  | 0.715953 | 0.313762 | 0.105664 | 0.052030 |
+| **10d** | 0.715963 | 0.290754 | 0.105601 | 0.052185 |
+| **30d** | 0.715437 | 0.292693 | 0.107512 | 0.052152 |
+| **90d** | 0.715383 | 0.291364 | 0.105679 | 0.052584 |
