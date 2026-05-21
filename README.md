@@ -74,8 +74,9 @@ Abrir `analisis/cartera.ipynb`. Requiere que los cuadernos con `sal90` estén ej
 ---
 
 ## Combinaciones de ventanas con datos de test
+La siguiente tabla muestra el menor MAE obtenido en test para cada combinación de ventana de entrada y ventana de salida en la fase de competición.
 
-| Ventana entrada \ Ventana salida | 1d | 5d | 30d | 90d |
+| Ventana salida \ Ventana entradas | 1d | 5d | 30d | 90d |
 |---|---|---|---|---|
 | **5d**  | 0.012243 | 0.005581 | 0.002319 | 0.001263 |
 | **10d** | 0.012244 | 0.005580 | 0.002319 | 0.001262 |
@@ -83,8 +84,9 @@ Abrir `analisis/cartera.ipynb`. Requiere que los cuadernos con `sal90` estén ej
 | **90d** | 0.012271 | 0.005589 | 0.002320 | 0.001268 |
 
 ## Combinaciones de ventanas con datos de investigación
+La siguiente tabla muestra el MAE obtenido en test para cada combinación de ventanas tras aplicar el preprocesado de la fase de investigación.
 
-| Ventana entrada \ Ventana salida | 1d | 5d | 30d | 90d |
+| Ventana salidas \ Ventana entradas | 1d | 5d | 30d | 90d |
 |---|---|---|---|---|
 | **5d**  | 0.715953 | 0.313762 | 0.105664 | 0.052030 |
 | **10d** | 0.715963 | 0.290754 | 0.105601 | 0.052185 |
